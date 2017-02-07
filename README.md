@@ -14,3 +14,7 @@ TDD proving harder!
 
 2017-02-07 status report
 WTF is going on? No idea!
+
+2017-02-07 progress report
+blah blah blah
+
