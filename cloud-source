@@ -6,3 +6,5 @@ C: This is another new line.
 L: A local update. Oooh, conflict!
 
 L: changing 2 files, only adding 1 to the commit
+
+L: local change and not yet adding new-file-3
