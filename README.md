@@ -16,3 +16,6 @@ TDD proving harder!
 Added feature-01, aka Wassup.
 Also feature-02, aka turbo boost.
 The others are still only thought exercises.
+
+2017-03-31
+rocket option added. Now we're flying!
