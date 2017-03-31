@@ -23,4 +23,8 @@ Added feature-01, aka Wassup.
 Also feature-02, aka turbo boost.
 The others are still only thought exercises.
 
-2017-03-31 merged the what-if branch stuff from the apprentice and offilne tree.
+2017-03-31 merged the what-if branch stuff from the apprentice and offline tree.
+
+2017-03-31
+rocket option added. Now we're flying!
+Fixed a couple of typos
