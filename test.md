@@ -14,7 +14,7 @@ merge-cli getnewaddress
 The pools generally provide the essential parameters you will need for the miner. Some tweaking of the values might be necessary.
 
 
-2. Download the CPU Miner: 
+2. Download the CPU Miner.
 ```
 wget TODO-provide-compiled-file -O cpuminer
 ```
@@ -31,7 +31,8 @@ If you want the miner to be generally available on your machine then:
 sudo make install
 ```
 
-3. Run the CPU Miner:
+3. Run the CPU Miner.
+
 Either from the cpuminer-merge directory by:
 ```
 ./cpuminer -a argon2m -o <value for your chosen pool> -u <receiving address from step 0> <any other parms recommended by your chosen pool> <any other parms>
