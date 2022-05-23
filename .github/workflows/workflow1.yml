@@ -1,17 +1,26 @@
 name: GitHub Actions Demo 1
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+   build:
     runs-on: ubuntu-latest
+    env:
+      tag: latest
     steps:
-      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "The name of your branch is ${{ github.ref_name }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "This job's status is ${{ job.status }}."
+    - uses: actions/checkout@v2
+    - name: Login to DockerHub
+      run: echo ${{ secrets.org_blocknetdximg_password }} | docker login --username ${{ secrets.org_blocknetdximg_username }} --password-stdin 
+    - name: Image info
+      run: echo Building ${{ github.workflow }} ${{ github.ref_name}}
+    - name: Set tag to branch name if not on master
+      if: github.ref_name != 'master'
+      run: echo "tag=${{ github.ref_name }}" >> $GITHUB_ENV
+    - name: Build an image
+#      if: github.ref == 'refs/heads/master'
+#      working-directory: db-processor
+      run: echo docker build . --file Dockerfile --tag blocknetdx/xquery-db-processor:${{ tag }}
+    - name: Push image
+#      if: github.ref == 'refs/heads/master'
+      run: echo docker push blocknetdx/xquery-db-processor:${{ tag }}
+    - name: Remove dangling images
+      if: ${{ always() }}
+#      run: yes | docker image prune
