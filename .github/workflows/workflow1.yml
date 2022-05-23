@@ -21,6 +21,7 @@ jobs:
     - name: Push image
 #      if: github.ref == 'refs/heads/master'
       run: echo docker push blocknetdx/xquery-db-processor:${{ tag }}
-    - name: Remove dangling images
-      if: ${{ always() }}
+
+#- name: Remove dangling images
+#      if: ${{ always() }}
 #      run: yes | docker image prune
