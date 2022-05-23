@@ -7,20 +7,21 @@ jobs:
       tag: latest
     steps:
     - uses: actions/checkout@v2
-    - name: Login to DockerHub
-      run: echo ${{ secrets.org_blocknetdximg_password }} | docker login --username ${{ secrets.org_blocknetdximg_username }} --password-stdin 
+#    - name: Login to DockerHub
+#      run: echo ${{ secrets.org_blocknetdximg_password }} | docker login --username ${{ secrets.org_blocknetdximg_username }} --password-stdin 
     - name: Image info
-      run: echo Building ${{ github.workflow }} ${{ github.ref_name}}
+      run: echo Building ${{ github.workflow }} ${{ github.ref_name }}
     - name: Set tag to branch name if not on master
       if: github.ref_name != 'master'
       run: echo "tag=${{ github.ref_name }}" >> $GITHUB_ENV
     - name: Build an image
 #      if: github.ref == 'refs/heads/master'
 #      working-directory: db-processor
-      run: echo docker build . --file Dockerfile --tag blocknetdx/xquery-db-processor:${{ tag }}
+      run: echo docker build . --file Dockerfile --tag blocknetdx/xquery-db-processor:${{ env.tag }}
     - name: Push image
 #      if: github.ref == 'refs/heads/master'
-      run: echo docker push blocknetdx/xquery-db-processor:${{ tag }}
-    - name: Remove dangling images
-      if: ${{ always() }}
+      run: echo docker push blocknetdx/xquery-db-processor:${{ env.tag }}
+
+#- name: Remove dangling images
+#      if: ${{ always() }}
 #      run: yes | docker image prune
