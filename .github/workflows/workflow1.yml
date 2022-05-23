@@ -17,10 +17,10 @@ jobs:
     - name: Build an image
 #      if: github.ref == 'refs/heads/master'
 #      working-directory: db-processor
-      run: echo docker build . --file Dockerfile --tag blocknetdx/xquery-db-processor:${{ tag }}
+      run: echo docker build . --file Dockerfile --tag blocknetdx/xquery-db-processor:${{ env.tag }}
     - name: Push image
 #      if: github.ref == 'refs/heads/master'
-      run: echo docker push blocknetdx/xquery-db-processor:${{ tag }}
+      run: echo docker push blocknetdx/xquery-db-processor:${{ env.tag }}
 
 #- name: Remove dangling images
 #      if: ${{ always() }}
